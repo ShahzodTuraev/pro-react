@@ -1,4 +1,5 @@
 body {
+  background: #000;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -10,4 +11,101 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* MENU BURGER ICON STYLE */
+.menu_wrap {
+  width: 48px;
+  height: 48px;
+  position: absolute;
+  top: 1.12rem;
+  right: 1.25rem;
+  z-index: 1;
+  background: transparent;
+  display: none;
+  align-items: center;
+  justify-content: center; 
+}
+.menu-btn{
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 48px;
+  height: 48px;
+  cursor: pointer;
+  transition: all .5s ease-in-out;
+  background: rgba(0, 0, 0, 0.45);
+  border-radius: 50%;
+}
+.menu-btn_burger{
+  width: 24px;
+  height: 3px;
+  background: #ffffff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(255, 101, 47, .2);
+  transition: all .5s ease-in-out;
+}
+.menu-btn_burger::before,
+.menu-btn_burger::after{
+  content: '';
+  position: absolute;
+  width: 24px;
+  height: 3px;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(255, 101, 47, .2);
+  transition: all .5s ease-in-out;
+}
+.menu-btn_burger::before{
+  transform: translateY(-8px);
+}
+.menu-btn_burger::after{
+  transform: translateY(8px);
+}
+/* ANIMATION */
+.menu-btn.open .menu-btn_burger{
+  transform: translateX(-50px);
+  background: transparent;
+  box-shadow: none;
+}
+.menu-btn.open .menu-btn_burger::before{
+  transform: rotate(45deg) translate(35px, -35px);
+}
+.menu-btn.open .menu-btn_burger::after{
+  transform: rotate(-45deg) translate(35px, 35px);
+}
+/* MENU BOX STYLE */
+
+.menu_box{
+  background: rgba(255, 255, 255, 0.95);
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  padding: 20px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  position: fixed;
+  top: 6rem;
+  right: -100%;
+  transition: 0.5s;
+}
+.menu_box.active{
+  right: 0;
+  transition: 0.5s;
+}
+.menu_item{
+  cursor: pointer;
+  margin: 5px 0;
+}
+.menu_item:hover{background: rgb(235, 235, 235);}
+
+@media screen and (max-width: 821px) {
+  .menu_wrap{display: flex;}
 }
